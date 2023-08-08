@@ -4,6 +4,7 @@ class Database
 {
     //define an instance property 
     public $connection;
+    public $statement;
 
     //this __construct() function is called by php automatically 
     public function __construct($config, $username = 'root', $password = ''){
@@ -18,10 +19,29 @@ class Database
     public function query($query, $params=[])
     {
         //prepare a new query to send to MySQL
-        $statement = $this->connection->prepare($query);
+        $this->statement = $this->connection->prepare($query);
         //MySQL execute the query
-        $statement->execute($params);
+        $this->statement->execute($params);
         //we fetch all the results
-        return $statement;
+        return $this;
+    }  
+
+    public function get() {
+        return $this->statement->fetchAll();
     }
+
+    public function find() {
+        return $this->statement->fetch();
+    }
+
+    public function findOrFail() {
+        $result = $this->find();
+
+        if(!$result){
+            abort();
+        }
+        return $result;
+    }
+
+
 }
