@@ -8,9 +8,8 @@ require 'partials/banner.php';
     <p class='mb-6'>
       <a href="/notes" class="text-blue-500 underline">go back...</a>
     </p>
-
     <p>
-      <?= htmlspecialchars($note['body']) ?>
+      <?= htmlspecialchars($note['note']) ?>
     </p>
   </div>
 </main>

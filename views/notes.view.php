@@ -9,7 +9,7 @@ require 'partials/banner.php';
       <?php foreach ($notes as $note) : ?>
         <li>
           <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">
-            <?= htmlspecialchars($note['body']) ?>
+            <?= htmlspecialchars($note['note']) ?>
           </a>
         </li>
       <?php endforeach ?>
